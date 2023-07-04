@@ -1,24 +1,13 @@
 {
-    "name": "",
-    "category": "",
-    "example_input": {
-        "prompt": "Hello I am a [MASK] model."
-    },
-    "example_output": {
-        "outputs":[
-            {
-                "score":0.13177461922168732,
-                "token":4827,
-                "token_str":"fashion",
-                "sequence":"hello i am a fashion model."
-            },
-            {
-                "score":0.1120428815484047,
-                "token":2535,
-                "token_str":"role",
-                "sequence":"hello i am a role model."
-            }
-        ]
-    },
-    "version": "1"
+  "name": "Potassium - Falcon 7b",
+  "category": "",
+  "example_input": {
+    "prompt": "Who was the president of the United States in 1941?."
+  },
+  "example_output": {
+    "outputs": {
+      "generated_text": "Franklin D. Roosevelt was the president of the United States in 1941."
+    }
+  },
+  "version": "1"
 }

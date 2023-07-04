@@ -38,14 +38,16 @@ def init():
 @app.handler()
 def handler(context: dict, request: Request) -> Response:
     prompt = request.json.get("prompt")
+    max_tokens = request.json.get("max_tokens", 1024)
+    temperature = request.json.get("temperature", 0.3)
     model = context.get("model")
     outputs = model(
         prompt,
         min_new_tokens=2,
-        max_new_tokens=1024,
+        max_new_tokens=max_tokens,
         do_sample=False,
         num_beams=1,
-        temperature=float(0.3),
+        temperature=float(temperature),
         repetition_penalty=float(1.2),
         renormalize_logits=True
     )
