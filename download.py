@@ -1,11 +1,25 @@
 # This file runs during container build time to get model weights built into the container
 
-# In this example: A Huggingface BERT model
-from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights
-    pipeline('fill-mask', model='bert-base-uncased')
+    tokenizer = AutoTokenizer.from_pretrained(
+        "h2oai/h2ogpt-gm-oasst1-multilang-2048-falcon-7b",
+        use_fast=False,
+        padding_side="left",
+        trust_remote_code=True,
+    )
+
+    model = AutoModelForCausalLM.from_pretrained(
+        "h2oai/h2ogpt-gm-oasst1-multilang-2048-falcon-7b",
+        torch_dtype=torch.bfloat16,
+        device_map={"": "cuda:0"},
+        trust_remote_code=True,
+    )
+
 
 if __name__ == "__main__":
     download_model()
