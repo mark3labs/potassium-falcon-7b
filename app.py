@@ -12,14 +12,14 @@ app = Potassium("potassium-falcon-7b")
 def init():
 
     tokenizer = AutoTokenizer.from_pretrained(
-        "h2oai/h2ogpt-gm-oasst1-multilang-2048-falcon-7b",
+        "tiiuae/falcon-7b-instruct",
         use_fast=False,
         padding_side="left",
         trust_remote_code=True,
     )
 
     generate_text = pipeline(
-        model="h2oai/h2ogpt-gm-oasst1-multilang-2048-falcon-7b",
+        model="tiiuae/falcon-7b-instruct",
         tokenizer=tokenizer,
         torch_dtype=torch.float16,
         trust_remote_code=True,
